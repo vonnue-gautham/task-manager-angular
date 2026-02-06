@@ -1,0 +1,28 @@
+<form 
+    [formGroup]="form"
+    (ngSubmit)="submit()" 
+    class="p-3 border rounded shadow-sm bg-light"
+>
+    <input 
+        formControlName="title"
+        type="text"
+        class="form-control mt-3"
+        placeholder="Task title"
+    >
+    @if (form.get('title')?.invalid && (form.get('title')?.dirty || form.get('title')?.touched)) {
+        <small class="text-danger ms-2">
+            This field is required.
+        </small>
+    }
+    <textarea
+        formControlName="description"
+        class="form-control mt-3"
+        rows="3"
+        placeholder="Task description"
+    ></textarea>
+    <button
+        type="submit" 
+        class="btn btn-primary w-100  mt-3"
+        [disabled]="form.get('title')?.invalid"
+    >Add Task</button>
+</form>

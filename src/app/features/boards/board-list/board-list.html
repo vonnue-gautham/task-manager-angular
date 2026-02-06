@@ -1,0 +1,18 @@
+<div class="container mt-4">
+    <h2 class="mb-3">Your Boards</h2>
+    @if (boards().length) {
+        <div class="list-group">
+            @for (board of boards(); track board.id) {
+                <a 
+                    class="list-group-item list-group-item-action"
+                    [routerLink]="['/boards', board.id]"
+                >
+                    {{ board.name }}
+                </a>
+            }
+        </div>
+    } @else {
+        <p class="text-muted">No boards yet. Create one to get started.</p>
+    }
+</div>
+

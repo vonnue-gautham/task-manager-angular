@@ -1,0 +1,65 @@
+<div class="container mt-4 mb-4">
+  <h2 class="mb-4 text-center">Task Board</h2>
+
+  <div class="row justify-content-center mb-4">
+    <div class="col-md-6">
+      <app-task-form
+        (taskAdded)="loadTasks()"
+        [boardId]="this.boardId()"
+      ></app-task-form>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-header bg-light text-center">
+          <h5 class="mb-0">Todo</h5>
+        </div>
+        <div class="card-body bg-light">
+          @for (task of toDoTasks(); track task.id) {
+            <app-task-card 
+              [task]="task"
+              (deleted)="loadTasks()"
+              (updated)="loadTasks()"
+            ></app-task-card>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-header bg-light text-center">
+          <h5 class="mb-0">In Progress</h5>
+        </div>
+        <div class="card-body bg-light">
+          @for (task of inProgressTasks(); track task.id) {
+            <app-task-card 
+              [task]="task"
+              (deleted)="loadTasks()"
+              (updated)="loadTasks()"
+            ></app-task-card>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-header bg-light text-center">
+          <h5 class="mb-0">Done</h5>
+        </div>
+        <div class="card-body bg-light">
+          @for (task of doneTasks(); track task.id) {
+            <app-task-card 
+              [task]="task"
+              (deleted)="loadTasks()"
+              (updated)="loadTasks()"
+            ></app-task-card>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
