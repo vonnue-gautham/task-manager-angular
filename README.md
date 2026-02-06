@@ -1,59 +1,150 @@
-# TaskManager
+# ✅ Task Manager (Angular)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
+## 📌 Overview
 
-## Development server
+**Task Manager** is an Angular-based Kanban-style application that lets you:
 
-To start a local development server, run:
+* View multiple boards (Work, Personal, Learning)
+* Add tasks to a board
+* Move tasks between **Todo → In Progress → Done**
+* Delete tasks
+* See tasks grouped visually in three columns
 
-```bash
+### Tech Stack
+
+* **Angular (v16+ / standalone-friendly)**
+* **Signals**
+* **Reactive Forms**
+* **Angular Router**
+* **HttpClient**
+* **JSON Server (mock backend)**
+
+---
+
+## 📦 Prerequisites
+
+Make sure you have installed:
+
+### **Node.js (v16+ recommended)**
+
+[https://nodejs.org/](https://nodejs.org/)
+
+### **Angular CLI**
+
+```sh
+npm install -g @angular/cli
+```
+
+### **JSON Server (mock backend)**
+
+```sh
+npm install -g json-server
+```
+
+---
+
+## 📁 Project Structure
+
+```
+TASK-MANAGER/
+│
+├── .angular/
+├── .vscode/
+├── node_modules/
+├── public/
+│
+├── src/
+│   ├── app/
+│   │   ├── core/
+│   │   │   ├── models/
+│   │   │   │   ├── board.model.ts
+│   │   │   │   ├── task.model.ts
+│   │   │   │   └── task-status.enum.ts
+│   │   │   └── services/
+│   │   │       ├── board.service.ts
+│   │   │       └── task.service.ts
+│   │   │
+│   │   ├── features/
+│   │   │   ├── Boards/
+│   │   │   │   ├── board-list/
+│   │   │   │   └── boards-module.ts
+│   │   │   │
+│   │   │   └── Tasks/
+│   │   │       ├── task-board/
+│   │   │       ├── task-card/
+│   │   │       ├── task-form/
+│   │   │       └── tasks-module.ts
+│   │   │
+│   │   ├── shared/
+│   │   │   └── pipes/
+│   │   │       └── status-color-pipe.ts
+│   │   │
+│   │   ├── app.config.ts
+│   │   ├── app.routes.ts
+│   │   └── app.ts
+│   │
+│   ├── environments/
+│   │   └── environment.ts
+│   │
+│   ├── index.html
+│   ├── main.ts
+│   └── styles.css
+```
+
+---
+
+## ⚙️ Step 1 — Configure Environment
+
+Open:
+
+```
+src/environments/environment.ts
+```
+
+Ensure it looks like this:
+
+```ts
+export const environment = {
+  apiUrl: 'http://localhost:3000'
+};
+```
+
+---
+
+## 🗄️ Step 2 — Start JSON Server (Mock Backend)
+
+From the **project root (`TASK-MANAGER/`)**, run:
+
+```sh
+json-server --watch db.json --port 3000
+```
+
+Verify in your browser:
+
+* Boards → [http://localhost:3000/boards](http://localhost:3000/boards)
+* Tasks  → [http://localhost:3000/tasks](http://localhost:3000/tasks)
+
+---
+
+## ▶️ Step 3 — Install Dependencies
+
+In the project root:
+
+```sh
+npm install
+```
+
+---
+
+## ▶️ Step 4 — Run the Angular App
+
+```sh
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Then open:
 
-## Code scaffolding
+👉 [http://localhost:4200](http://localhost:4200)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

@@ -2,107 +2,128 @@
   "tasks": [
     {
       "id": "1770291813789",
-      "title": "sadasd",
-      "description": "asdasdasdasdas",
-      "status": "in-progress",
+      "title": "Prepare quarterly report",
+      "description": "Compile sales data and prepare slides for the Q1 review meeting.",
+      "status": "done",
       "boardId": 1
     },
     {
       "id": "1770292193858",
-      "title": "dgdgfdg",
-      "description": "",
+      "title": "Refactor authentication service",
+      "description": "Improve error handling and add token refresh logic.",
       "status": "in-progress",
       "boardId": 1
     },
     {
       "id": "1770293198308",
-      "title": "sdfsdf",
-      "description": "sdfsdfsdfsdf",
+      "title": "Grocery shopping",
+      "description": "Buy vegetables, milk, and household essentials.",
       "status": "done",
       "boardId": 2
     },
     {
       "id": "1770293209572",
-      "title": "apple",
-      "description": "",
+      "title": "Plan weekend trip",
+      "description": "Research hotels and activities for a two-day getaway.",
       "status": "in-progress",
       "boardId": 2
     },
     {
       "id": "1770293223876",
-      "title": "mango",
-      "description": "optional thing",
-      "status": "done",
+      "title": "Finish Angular tutorial",
+      "description": "Complete the reactive forms and signals sections.",
+      "status": "todo",
       "boardId": 3
     },
     {
       "id": "1770293275991",
-      "title": "hgfghfg",
-      "description": "fghfghgfhgfh",
+      "title": "Fix build pipeline",
+      "description": "Investigate flaky CI tests and update dependencies.",
       "status": "done",
       "boardId": 1
     },
     {
       "id": "1770293281319",
-      "title": "dfgdf",
-      "description": "dfgdfgdfgdfgdfg",
+      "title": "Organize home office",
+      "description": "Sort paperwork and cable management.",
       "status": "in-progress",
       "boardId": 2
     },
     {
       "id": "1770293288167",
-      "title": "gggg",
-      "description": "gggggggggggggggggg",
-      "status": "in-progress",
+      "title": "Complete TypeScript course",
+      "description": "Finish modules on generics and advanced types.",
+      "status": "todo",
       "boardId": 3
     },
     {
       "id": "1770295632834",
-      "title": "sasddsad",
-      "description": "sadasdasda\n",
+      "title": "Client presentation",
+      "description": "Prepare demo and talking points for stakeholder meeting.",
       "status": "done",
       "boardId": 1
     },
     {
       "id": "1770349979904",
-      "title": "dgdf",
-      "description": "dgdfgdfgdfgdfg",
-      "status": "todo",
+      "title": "Read design patterns book",
+      "description": "Study observer and strategy patterns with examples.",
+      "status": "done",
       "boardId": 3
     },
     {
       "id": "1770350138884",
-      "title": "erwe",
-      "description": "werwerwerewrwe",
-      "status": "todo",
+      "title": "Write blog post",
+      "description": "Draft article about modern Angular best practices.",
+      "status": "done",
       "boardId": 3
     },
     {
       "id": "1770350152716",
-      "title": "sdfsdfsdf",
-      "description": "sdfsdfsdf",
-      "status": "todo",
+      "title": "Build sample project",
+      "description": "Create a small demo app using signals and standalone components.",
+      "status": "in-progress",
       "boardId": 3
     },
     {
-      "id": 1770351506176,
-      "title": "cgh",
-      "description": "hfhfdgd",
+      "id": "1770351506176",
+      "title": "Implement search feature",
+      "description": "Add task filtering and debounce input handling.",
+      "status": "in-progress",
+      "boardId": 1
+    },
+    {
+      "id": 1770358692578,
+      "title": "Schedule team meeting",
+      "description": "Set up weekly sync with development team.",
       "status": "todo",
       "boardId": 1
+    },
+    {
+      "id": 1770358695802,
+      "title": "Review pull requests",
+      "description": "Check recent PRs and leave feedback.",
+      "status": "todo",
+      "boardId": 1
+    },
+    {
+      "id": 1770358702722,
+      "title": "Buy birthday gift",
+      "description": "Find a thoughtful present for a friend.",
+      "status": "todo",
+      "boardId": 2
     }
   ],
   "boards": [
-    { 
-      "id": 1, 
-      "name": "Work" 
+    {
+      "id": "1",
+      "name": "Work"
     },
-    { 
-      "id": 2, 
-      "name": "Personal" 
+    {
+      "id": "2",
+      "name": "Personal"
     },
-    { 
-      "id": 3,
+    {
+      "id": "3",
       "name": "Learning"
     }
   ]
