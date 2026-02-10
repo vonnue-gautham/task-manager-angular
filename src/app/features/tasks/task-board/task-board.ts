@@ -1,44 +1,39 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { TaskForm } from '../task-form/task-form';
 import { TaskCard } from '../task-card/task-card';
-import { Task } from '../../../core/models/task.model';
-import { TaskService } from '../../../core/services/task.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { TaskStatus } from '../../../core/models/task-status.enum';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../store/app.state';
+import { loadTasks } from '../../../store/actions/task.actions';
+import {
+  selectDoneTasks,
+  selectInProgressTasks,
+  selectTodoTasks,
+} from '../../../store/selectors/task.selectors';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-task-board',
-  imports: [TaskForm, TaskCard],
+  imports: [TaskForm, TaskCard, AsyncPipe],
   templateUrl: './task-board.html',
   styleUrl: './task-board.css',
 })
 export class TaskBoard implements OnInit {
-  toDoTasks = signal<Task[]>([]);
-  inProgressTasks = signal<Task[]>([]);
-  doneTasks = signal<Task[]>([]);
+  private store = inject(Store<AppState>);
+  private route = inject(ActivatedRoute);
 
-  boardId = signal<number>(1);
+  toDoTasks$ = this.store.select(selectTodoTasks);
+  inProgressTasks$ = this.store.select(selectInProgressTasks);
+  doneTasks$ = this.store.select(selectDoneTasks);
 
-  constructor(
-    private taskService: TaskService,
-    private route: ActivatedRoute,
-  ) {}
-
-  loadTasks() {
-    const tasks = this.taskService.getTasksByBoard(this.boardId());
-    tasks.subscribe((tasks) => {
-      this.toDoTasks.set(tasks.filter((task) => task.status === TaskStatus.Todo));
-      this.inProgressTasks.set(tasks.filter((task) => task.status === TaskStatus.InProgress));
-      this.doneTasks.set(tasks.filter((task) => task.status === TaskStatus.Done));
-    });
-  }
+  boardId!: number;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      const id = params.get('id');
-      if (id) {
-        this.boardId.set(parseInt(id, 10));
-        this.loadTasks();
+      const boardId = Number(params.get('id'));
+      if (boardId) {
+        this.boardId = boardId;
+        this.store.dispatch(loadTasks({ boardId }));
       }
     });
   }

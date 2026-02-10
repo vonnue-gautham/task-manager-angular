@@ -4,8 +4,7 @@
   <div class="row justify-content-center mb-4">
     <div class="col-md-6">
       <app-task-form
-        (taskAdded)="loadTasks()"
-        [boardId]="this.boardId()"
+        [boardId]="boardId"
       ></app-task-form>
     </div>
   </div>
@@ -17,11 +16,9 @@
           <h5 class="mb-0">Todo</h5>
         </div>
         <div class="card-body bg-light">
-          @for (task of toDoTasks(); track task.id) {
+          @for (task of toDoTasks$ | async; track task.id) {
             <app-task-card 
               [task]="task"
-              (deleted)="loadTasks()"
-              (updated)="loadTasks()"
             ></app-task-card>
           }
         </div>
@@ -34,11 +31,9 @@
           <h5 class="mb-0">In Progress</h5>
         </div>
         <div class="card-body bg-light">
-          @for (task of inProgressTasks(); track task.id) {
+          @for (task of inProgressTasks$ | async; track task.id) {
             <app-task-card 
               [task]="task"
-              (deleted)="loadTasks()"
-              (updated)="loadTasks()"
             ></app-task-card>
           }
         </div>
@@ -51,11 +46,9 @@
           <h5 class="mb-0">Done</h5>
         </div>
         <div class="card-body bg-light">
-          @for (task of doneTasks(); track task.id) {
+          @for (task of doneTasks$ | async; track task.id) {
             <app-task-card 
               [task]="task"
-              (deleted)="loadTasks()"
-              (updated)="loadTasks()"
             ></app-task-card>
           }
         </div>

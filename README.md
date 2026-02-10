@@ -1,4 +1,4 @@
-# ✅ Task Manager (Angular)
+# ✅ Task Manager (Angular + NgRx)
 
 ## 📌 Overview
 
@@ -9,30 +9,50 @@
 * Move tasks between **Todo → In Progress → Done**
 * Delete tasks
 * See tasks grouped visually in three columns
+* Manage application state using **NgRx (Redux pattern for Angular)**
 
-### Tech Stack
+This project is designed as a **learning-friendly but production-style Angular application**, demonstrating modern Angular patterns along with centralized state management.
 
-* **Angular (v16+ / standalone-friendly)**
-* **Signals**
+---
+
+## 🛠️ Tech Stack
+
+* **Angular 21 (Standalone-first architecture)**
+* **NgRx (Store, Effects, Selectors)**
+* **Signals (where appropriate)**
 * **Reactive Forms**
 * **Angular Router**
 * **HttpClient**
+* **RxJS**
 * **JSON Server (mock backend)**
+
+### Why NgRx in this project?
+
+NgRx is used to:
+
+* Maintain a **single source of truth** for tasks
+* Handle side effects (API calls) via **NgRx Effects**
+* Make state predictable and debuggable
+* Keep components clean by moving data logic to the store
+
+The core data flow used in this app:
+
+```
+Component → Dispatch Action → Effect (API call) → Reducer → Store → Selector → UI
+```
 
 ---
 
 ## 📦 Prerequisites
 
-Make sure you have installed:
-
-### **Node.js (v16+ recommended)**
+### **Node.js (v18+ recommended)**
 
 [https://nodejs.org/](https://nodejs.org/)
 
-### **Angular CLI**
+### **Angular CLI (v21)**
 
 ```sh
-npm install -g @angular/cli
+npm install -g @angular/cli@21
 ```
 
 ### **JSON Server (mock backend)**
@@ -78,6 +98,17 @@ TASK-MANAGER/
 │   │   ├── shared/
 │   │   │   └── pipes/
 │   │   │       └── status-color-pipe.ts
+│   │   │
+│   │   ├── store/
+│   │   │   ├── actions/
+│   │   │   │   └── task.actions.ts
+│   │   │   ├── reducers/
+│   │   │   │   └── task.reducer.ts
+│   │   │   ├── effects/
+│   │   │   │   └── task.effects.ts
+│   │   │   ├── selectors/
+│   │   │   │   └── task.selectors.ts
+│   │   │   └── app.state.ts
 │   │   │
 │   │   ├── app.config.ts
 │   │   ├── app.routes.ts
@@ -134,6 +165,12 @@ In the project root:
 npm install
 ```
 
+This installs:
+
+* `@ngrx/store`
+* `@ngrx/effects`
+* `@ngrx/store-devtools` (optional but recommended for debugging)
+
 ---
 
 ## ▶️ Step 4 — Run the Angular App
@@ -147,4 +184,3 @@ Then open:
 👉 [http://localhost:4200](http://localhost:4200)
 
 ---
-

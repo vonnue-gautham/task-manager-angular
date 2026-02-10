@@ -1,8 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Task } from '../../../core/models/task.model';
-import { TaskService } from '../../../core/services/task.service';
 import { StatusColorPipe } from '../../../shared/pipes/status-color-pipe';
 import { TaskStatus } from '../../../core/models/task-status.enum';
+import { deleteTask, updateTask } from '../../../store/actions/task.actions';
+import { TaskState } from '../../../store/app.state';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-task-card',
@@ -15,15 +17,11 @@ export class TaskCard {
   @Output() deleted = new EventEmitter<void>();
   @Output() updated = new EventEmitter<void>();
 
-  constructor(private taskService: TaskService) {}
+  private store = inject(Store<TaskState>);
 
   private updateStatus(status: TaskStatus) {
     const updatedTask = { ...this.task, status };
-
-    this.taskService.updateTask(updatedTask).subscribe({
-      next: () => this.updated.emit(),
-      error: (error) => console.error('Update error: ', error),
-    });
+    this.store.dispatch(updateTask({ task: updatedTask }));
   }
 
   moveToInProgress() {
@@ -35,9 +33,6 @@ export class TaskCard {
   }
 
   deleteTask() {
-    this.taskService.deleteTask(this.task.id).subscribe({
-      next: () => this.deleted.emit(),
-      error: (err) => console.error('Delete error:', err),
-    });
+    this.store.dispatch(deleteTask({ id: this.task.id, boardId: this.task.boardId }));
   }
 }

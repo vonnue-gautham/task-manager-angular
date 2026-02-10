@@ -60,7 +60,7 @@
       "id": "1770295632834",
       "title": "Client presentation",
       "description": "Prepare demo and talking points for stakeholder meeting.",
-      "status": "done",
+      "status": "in-progress",
       "boardId": 1
     },
     {
@@ -88,25 +88,25 @@
       "id": "1770351506176",
       "title": "Implement search feature",
       "description": "Add task filtering and debounce input handling.",
-      "status": "in-progress",
+      "status": "done",
       "boardId": 1
     },
     {
-      "id": 1770358692578,
+      "id": "1770358692578",
       "title": "Schedule team meeting",
       "description": "Set up weekly sync with development team.",
       "status": "todo",
       "boardId": 1
     },
     {
-      "id": 1770358695802,
+      "id": "1770358695802",
       "title": "Review pull requests",
       "description": "Check recent PRs and leave feedback.",
       "status": "todo",
       "boardId": 1
     },
     {
-      "id": 1770358702722,
+      "id": "1770358702722",
       "title": "Buy birthday gift",
       "description": "Find a thoughtful present for a friend.",
       "status": "todo",
